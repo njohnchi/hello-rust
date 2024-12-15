@@ -1,12 +1,18 @@
-use std::io::{stdout, Write};
+use std::io::{stdout, Write, stdin, Read};
 
 fn main() {
-    let txt = b"Programming is like building a multilingual puzzle\n";
+    let mut buffer: [u8; 1000] = [0; 1000];
 
-    match stdout().write(txt) {
-        Ok(byte) => println!("written {} bytes to stdout", byte),
-        Err(_) => eprintln!("Could not write to stdout")
+    match stdin().read(&mut buffer) {
+        Ok(bytes) => {
+            println!("Read {} bytes from stdin", bytes);
+            let input = &buffer[0..bytes];
+
+            match stdout().write(input) {
+                Ok(bytes) => println!("written {} bytes to stdout", bytes),
+                Err(_) => eprintln!("Could not write to stdout")
+            }
+        }
+        Err(_) => eprintln!("Could not read from stdin")
     }
-
-    print!("with proper grammar, but the outcome is a piece of art,\n");
 }
