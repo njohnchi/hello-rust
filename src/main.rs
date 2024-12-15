@@ -1,3 +1,10 @@
+use std::io::{stdout, Write};
+
 fn main() {
-    println!("Hello, world!");
+    let txt = b"Programming is like building a multilingual puzzle\n";
+
+    match stdout().write(txt) {
+        Ok(byte) => println!("written {} bytes to stdout", byte),
+        Err(_) => println!("Could not write to stdout")
+    }
 }
