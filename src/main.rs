@@ -5,7 +5,7 @@ fn main() {
 
     match stdout().write(txt) {
         Ok(byte) => println!("written {} bytes to stdout", byte),
-        Err(_) => println!("Could not write to stdout")
+        Err(_) => eprintln!("Could not write to stdout")
     }
 
     print!("with proper grammar, but the outcome is a piece of art,\n");
