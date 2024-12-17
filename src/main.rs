@@ -1,16 +1,15 @@
 use std::io::{stdout, Write};
 
 fn main() {
-    const ALPHABET_COUNT: usize = 26;
-    const NEWLINE: u8 = b'\n';
-
-    let mut buffer: [u8; ALPHABET_COUNT + 1] = [0; ALPHABET_COUNT + 1];
-
-    for i in 0..ALPHABET_COUNT {
-        buffer[i] = b'a' + (ALPHABET_COUNT - i - 1) as u8;
+    let mut buffer = [0u8; 17];
+    for i in 0..16 {
+        if i < 10 {
+            buffer[i] = b'0' + i as u8;
+        } else {
+            buffer[i] = b'a' + (i % 10) as u8;
+        }
     }
-
-    buffer[ALPHABET_COUNT] = NEWLINE;
+    buffer[16] = b'\n';
 
     stdout()
         .write_all(&buffer)
