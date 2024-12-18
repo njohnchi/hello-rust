@@ -1,15 +1,17 @@
 use std::io::{stdout, Write};
 
 fn main() {
-    let mut buffer = [0u8; 17];
-    for i in 0..16 {
+    const TOTAL_COUNT: usize = 16;
+    let mut buffer = [0u8; TOTAL_COUNT + 1];
+
+    for i in 0..TOTAL_COUNT {
         if i < 10 {
             buffer[i] = b'0' + i as u8;
         } else {
             buffer[i] = b'a' + (i % 10) as u8;
         }
     }
-    buffer[16] = b'\n';
+    buffer[TOTAL_COUNT] = b'\n';
 
     stdout()
         .write_all(&buffer)
