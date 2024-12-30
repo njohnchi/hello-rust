@@ -1,5 +1,5 @@
 fn main() {
-    print_alphabet()
+    print_alphabet_x10()
 }
 
 fn print_alphabet() {
@@ -7,4 +7,10 @@ fn print_alphabet() {
         print!("{}", (b'a' + i) as char);
     }
     print!("\n");
+}
+
+fn print_alphabet_x10() {
+    for _i in 0..10 {
+        print_alphabet();
+    }
 }
