@@ -1,11 +1,7 @@
 fn main() {
-    let mut r = abs(98);
-    println!("{r}");
-    r = abs(0);
-    println!("{r}");
-    r = abs(0xff);
-    println!("{r}");
-    r = abs(-32);
+    print_last_digit(37);
+    print_last_digit(0);
+    let r = print_last_digit(-34564);
     println!("{r}");
 }
 
@@ -58,4 +54,13 @@ fn abs(num: i64) -> u64 {
         return -num as u64;
     }
     num as u64
+}
+
+fn print_last_digit(num: i64) -> u64 {
+    let mut last_digit = num % 10;
+    if last_digit < 0 {
+        last_digit *= -1;
+    }
+    println!("{last_digit}");
+    last_digit as u64
 }
