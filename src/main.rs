@@ -1,11 +1,11 @@
 fn main() {
-    let mut r = print_sign(98);
+    let mut r = abs(98);
     println!("{r}");
-    r = print_sign(0);
+    r = abs(0);
     println!("{r}");
-    r = print_sign(0xff);
+    r = abs(0xff);
     println!("{r}");
-    r = print_sign(-32);
+    r = abs(-32);
     println!("{r}");
 }
 
@@ -51,4 +51,11 @@ fn print_sign(num: i64) -> i8 {
 
     println!("0");
     0
+}
+
+fn abs(num: i64) -> u64 {
+    if num < 0 {
+        return -num as u64;
+    }
+    num as u64
 }
