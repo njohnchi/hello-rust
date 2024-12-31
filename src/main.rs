@@ -1,13 +1,12 @@
 fn main() {
-    let mut r = is_alpha(b'H');
-    print!("{r}");
-    r = is_alpha(b'o');
-    print!("{r}");
-    r = is_alpha(108);
-    print!("{r}");
-    r = is_alpha(b';');
-    print!("{r}");
-    print!("\n");
+    let mut r = print_sign(98);
+    println!("{r}");
+    r = print_sign(0);
+    println!("{r}");
+    r = print_sign(0xff);
+    println!("{r}");
+    r = print_sign(-32);
+    println!("{r}");
 }
 
 fn print_alphabet() {
@@ -37,5 +36,19 @@ fn is_alpha(c: u8) -> u8 {
     if c >= b'A' && c <= b'Z' {
         return 1;
     }
+    0
+}
+
+fn print_sign(num: i64) -> i8 {
+    if num > 0 {
+        println!("+");
+        return 1;
+    }
+    if num < 0 {
+        println!("-");
+        return -1;
+    }
+
+    println!("0");
     0
 }
