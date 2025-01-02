@@ -1,16 +1,11 @@
 fn main() {
-    times_table();
+    println!("{}", add(4, 7));
+    println!("{}", add(-4, 7));
+    println!("{}", add(0, 0));
+    println!("{}", add(4, -7));
+    println!("{}", add(-4, -7));
 }
 
-fn times_table() {
-    for i in 0..=9 {
-        for j in 0..=9 {
-            if j == 0 {
-                print!("{}", i * j);
-                continue;
-            }
-            print!(",{:3}", i * j);
-        }
-        print!("\n");
-    }
+fn add(a: i32, b: i32) -> i32 {
+    a + b
 }
