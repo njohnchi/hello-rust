@@ -1,28 +1,25 @@
 fn main() {
-    print_to_98(0);
-    print_to_98(98);
-    print_to_98(111);
-    print_to_98(81);
-    print_to_98(-10);
+    print_times_table(3);
+    print!("\n");
+    print_times_table(5);
+    print!("\n");
+    print_times_table(98);
+    print!("\n");
+    print_times_table(12);
 }
 
-fn print_to_98(n: i32) {
-    if n > 98 {
-        for i in (98..=n).rev() {
-            if i == n {
-                print!("{i}");
+fn print_times_table(n: i32) {
+    if n < 0 || n > 15 {
+        return;
+    }
+
+    for i in 0..=n {
+        for j in 0..=n {
+            if j == 0 {
+                print!("{}", i * j);
                 continue;
             }
-            print!(", {i}");
-        }
-        print!("\n");
-    } else {
-        for i in n..=98 {
-            if i == n {
-                print!("{i}");
-                continue;
-            }
-            print!(", {i}");
+            print!(",{:3}", i * j);
         }
         print!("\n");
     }
