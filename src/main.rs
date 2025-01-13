@@ -1,23 +1,17 @@
 fn main() {
-    print_fib();
+    println!("{}", are_you_playing_banjo("Ruth"));
+    println!("{}", are_you_playing_banjo("Sam"));
+    println!("{}", are_you_playing_banjo("Paul"));
+    println!("{}", are_you_playing_banjo("Ruby"));
 }
 
-fn print_fib() {
-    let mut first: u64 = 1;
-    let mut second: u64 = 2;
-    for i in 0..50 {
-        if i == 0 {
-            print!("{first}");
-            continue;
-        }
-        if i == 1 {
-            print!(", {second}");
-            continue;
-        }
-        let sum: u64 = first + second;
-        print!(", {}", sum);
-        first = second;
-        second = sum;
+fn are_you_playing_banjo(name: &str) -> String {
+    let mut name = String::from(name);
+    let b_name = name.as_bytes();
+    if b_name[0] == b'R' || b_name[0] == b'r' {
+        name.push_str(" plays banjo");
+        return name;
     }
-    print!("\n");
+    name.push_str(" does not plays banjo");
+    return name;
 }
