@@ -1,14 +1,11 @@
 fn main() {
-    println!("{}", even_or_odd(2));
-    println!("{}", even_or_odd(31));
-    println!("{}", even_or_odd(-8));
-    println!("{}", even_or_odd(-53));
+    println!("{}", boolean_to_string(false));
+    println!("{}", boolean_to_string(true));
 }
 
-fn even_or_odd(number: i32) -> &'static str {
-    if number % 2 == 0 {
-        "Even"
-    } else {
-        "Odd"
+fn boolean_to_string(b: bool) -> String {
+    match b {
+        true => String::from("true"),
+        false => String::from("false")
     }
 }
