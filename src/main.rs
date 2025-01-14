@@ -6,12 +6,8 @@ fn main() {
 }
 
 fn are_you_playing_banjo(name: &str) -> String {
-    let mut name = String::from(name);
-    let b_name = name.as_bytes();
-    if b_name[0] == b'R' || b_name[0] == b'r' {
-        name.push_str(" plays banjo");
-        return name;
+    match &name[0..1] {
+        "R" | "r" => format!("{} plays banjo", name),
+        _ => format!("{} does not play banjo", name)
     }
-    name.push_str(" does not plays banjo");
-    return name;
 }
