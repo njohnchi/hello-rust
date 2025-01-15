@@ -1,11 +1,12 @@
 fn main() {
-    println!("{}", boolean_to_string(false));
-    println!("{}", boolean_to_string(true));
+    println!("{}", solution("false"));
+    println!("{}", solution("true"));
 }
 
-fn boolean_to_string(b: bool) -> String {
-    match b {
-        true => String::from("true"),
-        false => String::from("false")
+fn solution(phrase: &str) -> String {
+    let mut result = String::new();
+    for c in phrase.chars().rev() {
+        result.push(c);
     }
+    result
 }
