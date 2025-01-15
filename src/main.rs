@@ -1,12 +1,16 @@
 fn main() {
-    println!("{}", solution("false"));
-    println!("{}", solution("true"));
+    println!("{}", basic_op('+', 4, 7));
+    println!("{}", basic_op('-', 11, 8));
+    println!("{}", basic_op('*', 2, 6));
+    println!("{}", basic_op('/', 45, 5));
 }
 
-fn solution(phrase: &str) -> String {
-    let mut result = String::new();
-    for c in phrase.chars().rev() {
-        result.push(c);
+fn basic_op(operator: char, value1: i32, value2: i32) -> i32 {
+    match operator {
+        '+' => value1 + value2,
+        '-' => value1 - value2,
+        '*' => value1 * value2,
+        '/' => value1 / value2,
+        _ => panic!("wrong operator")
     }
-    result
 }
