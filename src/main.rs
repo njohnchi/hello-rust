@@ -1,13 +1,16 @@
 fn main() {
-    println!("{}", rps("rock", "scissors"));
-    println!("{}", rps("scissors", "rock"));
-    println!("{}", rps("rock", "rock"));
+    println!("{:?}", remove_every_other(&[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
 }
 
-fn rps(p1: &str, p2: &str) -> &'static str  {
-    match (p1, p2) {
-        ("rock", "scissors") | ("paper", "rock") | ("scissors", "paper") => "Player 1 won!",
-        ("rock", "paper") | ("paper", "scissors") | ("scissors", "rock") => "Player 2 won!",
-        _ => "Draw!"
+fn remove_every_other(arr: &[u8]) -> Vec<u8> {
+    let mut result = Vec::new();
+    let mut index = 0;
+    while index < arr.len() {
+        if index % 2 == 0 {
+            result.push(arr[index]);
+        }
+        index += 1;
     }
+    result
 }
+
