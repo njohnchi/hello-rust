@@ -1,8 +1,9 @@
 fn main() {
-    println!("{:?}", remove_every_other(&[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
+    println!("{:?}", count_by(1, 10));
+    println!("{:?}", count_by(2, 5));
 }
 
-fn remove_every_other(arr: &[u8]) -> Vec<u8> {
-    arr.iter().step_by(2).copied().collect()
+fn count_by(x: u32, n: u32) -> Vec<u32> {
+    (1..=n).map(|i| i * x).collect()
 }
 
