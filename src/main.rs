@@ -3,14 +3,6 @@ fn main() {
 }
 
 fn remove_every_other(arr: &[u8]) -> Vec<u8> {
-    let mut result = Vec::new();
-    let mut index = 0;
-    while index < arr.len() {
-        if index % 2 == 0 {
-            result.push(arr[index]);
-        }
-        index += 1;
-    }
-    result
+    arr.iter().step_by(2).copied().collect()
 }
 
