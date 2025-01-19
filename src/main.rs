@@ -1,9 +1,10 @@
 fn main() {
-    println!("{:?}", count_by(1, 10));
-    println!("{:?}", count_by(2, 5));
+    println!("{:?}", powers_of_two(0));
+    println!("{:?}", powers_of_two(1));
+    println!("{:?}", powers_of_two(4));
 }
 
-fn count_by(x: u32, n: u32) -> Vec<u32> {
-    (1..=n).map(|i| i * x).collect()
+fn powers_of_two(n: u8) -> Vec<u128> {
+    (0..=n).map(|x| (2_u128).pow(x as u32)).collect()
 }
 
