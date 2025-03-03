@@ -1,8 +1,9 @@
 fn main() {
-    println!("{}", solution("abc", "bc"));
-    println!("{}", solution("abc", "b"));
+    println!("{}", disemvowel("This website is for losers LOL!"));
 }
 
-fn solution(word: &str, ending: &str) -> bool {
-    word.ends_with(ending)
+fn disemvowel(s: &str) -> String {
+    s.chars().filter(|&c| {
+        !"aeiouAEIOU".contains(c)
+    }).collect()
 }
