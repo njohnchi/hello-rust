@@ -1,10 +1,8 @@
 fn main() {
-    println!("{:?}", powers_of_two(0));
-    println!("{:?}", powers_of_two(1));
-    println!("{:?}", powers_of_two(4));
+    println!("{}", solution("abc", "bc"));
+    println!("{}", solution("abc", "b"));
 }
 
-fn powers_of_two(n: u8) -> Vec<u128> {
-    (0..=n).map(|x| (2_u128).pow(x as u32)).collect()
+fn solution(word: &str, ending: &str) -> bool {
+    word.ends_with(ending)
 }
-
