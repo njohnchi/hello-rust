@@ -1,9 +1,14 @@
 fn main() {
-    println!("{}", disemvowel("This website is for losers LOL!"));
+    let closure = return_closure();
+    call_twice(closure)
 }
 
-fn disemvowel(s: &str) -> String {
-    s.chars().filter(|&c| {
-        !"aeiouAEIOU".contains(c)
-    }).collect()
+fn return_closure() -> impl Fn() {
+    let s = String::from("a closure");
+    move || println!("{s}")
+}
+
+fn call_twice(f: impl Fn()) {
+    f();
+    f();
 }
