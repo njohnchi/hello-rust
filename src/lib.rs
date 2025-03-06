@@ -6,7 +6,7 @@ fn is_lower(character: char) -> bool {
     }
 }
 
-fn is_alpha(character: char) -> bool {
+fn is_upper(character: char) -> bool {
     if character >= 'A' && character <= 'Z' {
         true
     } else {
@@ -20,6 +20,26 @@ fn abs(number: i64) -> i64 {
     } else {
         number
     }
+}
+
+fn is_alpha(character: char) -> bool {
+    if is_upper(character) || is_lower(character) {
+        true
+    } else {
+        false
+    }
+}
+
+fn is_digit(character: char) -> bool {
+    if character >= '0' && character <= '9' {
+        true
+    } else {
+        false
+    }
+}
+
+fn mul(num1: i64, num2: i64) -> i64 {
+    num1 * num2
 }
 
 #[cfg(test)]
@@ -37,17 +57,37 @@ mod tests {
     }
 
     #[test]
+    fn it_is_upper() {
+        assert_eq!(is_upper('B'), true);
+        assert_eq!(is_upper('H'), true);
+        assert_eq!(is_upper('Q'), true);
+        assert_eq!(is_upper('f'), false);
+        assert_eq!(is_upper(','), false);
+        assert_eq!(is_upper('8'), false);
+    }
+
+    #[test]
     fn it_is_alpha() {
         assert_eq!(is_alpha('B'), true);
         assert_eq!(is_alpha('H'), true);
-        assert_eq!(is_alpha('Q'), true);
-        assert_eq!(is_alpha('f'), false);
+        assert_eq!(is_alpha('q'), true);
+        assert_eq!(is_alpha('f'), true);
         assert_eq!(is_alpha(','), false);
         assert_eq!(is_alpha('8'), false);
     }
 
     #[test]
-    fn test_abs() {
+    fn it_is_digit() {
+        assert_eq!(is_digit('3'), true);
+        assert_eq!(is_digit('0'), true);
+        assert_eq!(is_digit('9'), true);
+        assert_eq!(is_digit('A'), false);
+        assert_eq!(is_digit('j'), false);
+        assert_eq!(is_digit('['), false);
+    }
+
+    #[test]
+    fn returns_abs() {
         assert_eq!(abs(0), 0);
         assert_eq!(abs(23), 23);
         assert_eq!(abs(-97), 97);
@@ -59,7 +99,15 @@ mod tests {
 
     #[test]
     #[should_panic]
-    fn test_abs_min() {
+    fn abs_should_panic_for_min() {
         abs(i64::MIN);
+    }
+
+    #[test]
+    fn it_multiples() {
+        assert_eq!(mul(2, 16), 32);
+        assert_eq!(mul(7, 0), 0);
+        assert_eq!(mul(-5, 30), -150);
+        assert_eq!(mul(-3, -8), 24);
     }
 }
