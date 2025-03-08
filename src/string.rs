@@ -1,7 +1,7 @@
 use std::fmt::{Display, Formatter};
 
 pub struct MyString {
-    chars: [char; 100]
+    chars: Vec<char>
 }
 
 impl Display for MyString {
@@ -16,16 +16,34 @@ impl Display for MyString {
 impl MyString {
     pub fn new() -> Self {
         Self {
-            chars: ['\0'; 100]
+            chars: Vec::new(),
         }
     }
 
     pub fn from(string: &str) -> Self {
         let mut my_string = Self::new();
-        for i in 0..my_string.chars.len() {
-            if i >= string.len() { break }
-            my_string.chars[i] = string.chars().collect::<Vec<_>>()[i];
+        for i in 0..string.len() {
+            my_string.chars.push(string.chars().collect::<Vec<_>>()[i]);
         }
         my_string
+    }
+}
+
+#[cfg(test)]
+mod test_string {
+    use super::*;
+
+    #[test]
+    fn it_creates_empty_string() {
+        assert_eq!(format!("{}", MyString::new()), "");
+    }
+
+    #[test]
+    fn it_creates_string_from_str() {
+        assert_eq!(format!("{}", MyString::from("hello")), "hello");
+        assert_eq!(format!("{}", MyString::from("world")), "world");
+        assert_eq!(format!("{}", MyString::from("  ")), "  ");
+        assert_eq!(format!("{}", MyString::from("./")), "./");
+        assert_eq!(format!("{}", MyString::from("")), "");
     }
 }
