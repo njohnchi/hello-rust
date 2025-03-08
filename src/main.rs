@@ -1,42 +1,38 @@
+use std::fmt::{Display, Formatter};
+
 fn main() {
-    let my_dog = Dog::from(
-        String::from("Bingo"),
-        2.45,
-        String::from("Tommy")
-    );
-    my_dog.intro();
-
-    let mut your_dog = Dog::new();
-    your_dog.name = String::from("Pluto");
-    your_dog.age = 4.72;
-    your_dog.owner = String::from("Jane");
-    your_dog.intro();
-
-    let another_dog = Dog::new();
-    another_dog.intro();
+    let new_string = MyString::from("abcdefsfdfdsffsffghij");
+    print!("hello");
+    print!("{}", new_string);
+    print!("world");
 }
 
-struct Dog {
-    name: String,
-    age: f64,
-    owner: String,
+struct MyString {
+    chars: [char; 100]
 }
 
-impl Dog {
+impl Display for MyString {
+    fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
+        for i in 0..self.chars.len() {
+            write!(f, "{}", self.chars[i])?
+        }
+        Ok(())
+    }
+}
+
+impl MyString {
     fn new() -> Self {
         Self {
-            name: String::new(),
-            age: 0.0,
-            owner: String::new(),
+            chars: ['\0'; 100]
         }
     }
 
-    fn from(name: String, age: f64, owner: String) -> Self {
-        Self { name, age, owner }
-    }
-
-    fn intro(&self) {
-        println!("My name is {}, I am {}, and my owner is {}",
-                 self.name, self.age, self.owner);
+    fn from(string: &str) -> Self {
+        let mut my_string = Self::new();
+        for i in 0..my_string.chars.len() {
+            if i >= string.len() { break }
+            my_string.chars[i] = string.chars().collect::<Vec<_>>()[i];
+        }
+        my_string
     }
 }
