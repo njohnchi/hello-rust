@@ -6,8 +6,8 @@ pub struct MyString {
 
 impl Display for MyString {
     fn fmt(&self, f: &mut Formatter<'_>) -> std::fmt::Result {
-        for i in 0..self.chars.len() {
-            write!(f, "{}", self.chars[i])?
+        for c in self.chars.iter() {
+            write!(f, "{}", c)?
         }
         Ok(())
     }
@@ -21,11 +21,9 @@ impl MyString {
     }
 
     pub fn from(string: &str) -> Self {
-        let mut my_string = Self::new();
-        for i in 0..string.len() {
-            my_string.chars.push(string.chars().collect::<Vec<_>>()[i]);
+        Self {
+            chars: string.chars().collect()
         }
-        my_string
     }
 }
 
