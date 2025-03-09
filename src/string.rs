@@ -33,6 +33,10 @@ impl MyString {
     pub fn push_str(&mut self, string: &str) {
         string.chars().for_each(|c| self.chars.push(c));
     }
+
+    pub fn len(&self) -> usize {
+        self.chars.len()
+    }
 }
 
 #[cfg(test)]
@@ -79,5 +83,15 @@ mod test_string {
         my_str.push('l');
         my_str.push('d');
         assert_eq!(format!("{}", my_str), "hello world");
+    }
+
+    #[test]
+    fn it_returns_length_of_string() {
+        let mut my_str = MyString::new();
+        assert_eq!(my_str.len(), 0);
+        my_str.push_str("hel");
+        assert_eq!(my_str.len(), 3);
+        my_str.push_str("lo");
+        assert_eq!(my_str.len(), 5);
     }
 }
