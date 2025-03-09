@@ -25,6 +25,14 @@ impl MyString {
             chars: string.chars().collect()
         }
     }
+
+    pub fn push(&mut self, ch: char) {
+        self.chars.push(ch)
+    }
+
+    pub fn push_str(&mut self, string: &str) {
+        string.chars().for_each(|c| self.chars.push(c));
+    }
 }
 
 #[cfg(test)]
@@ -43,5 +51,33 @@ mod test_string {
         assert_eq!(format!("{}", MyString::from("  ")), "  ");
         assert_eq!(format!("{}", MyString::from("./")), "./");
         assert_eq!(format!("{}", MyString::from("")), "");
+    }
+
+    #[test]
+    fn it_push_str_to_my_string() {
+        let mut my_str = MyString::from("hel");
+        assert_eq!(format!("{}", my_str), "hel");
+        my_str.push_str("lo");
+        assert_eq!(format!("{}", my_str), "hello");
+        my_str.push_str(" ");
+        my_str.push_str("");
+        my_str.push_str("world");
+        assert_eq!(format!("{}", my_str), "hello world");
+    }
+
+    #[test]
+    fn it_push_char_to_my_string() {
+        let mut my_str = MyString::from("hel");
+        assert_eq!(format!("{}", my_str), "hel");
+        my_str.push('l');
+        my_str.push('o');
+        assert_eq!(format!("{}", my_str), "hello");
+        my_str.push(' ');
+        my_str.push('w');
+        my_str.push('o');
+        my_str.push('r');
+        my_str.push('l');
+        my_str.push('d');
+        assert_eq!(format!("{}", my_str), "hello world");
     }
 }
