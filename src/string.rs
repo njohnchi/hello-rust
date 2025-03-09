@@ -1,7 +1,8 @@
 use std::fmt::{Display, Formatter};
+use crate::vector::MyVec;
 
 pub struct MyString {
-    chars: Vec<char>
+    chars: MyVec<char>
 }
 
 impl Display for MyString {
@@ -16,7 +17,7 @@ impl Display for MyString {
 impl MyString {
     pub fn new() -> Self {
         Self {
-            chars: Vec::new(),
+            chars: MyVec::new(),
         }
     }
 
